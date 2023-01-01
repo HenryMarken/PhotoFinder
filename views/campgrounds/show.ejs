@@ -23,17 +23,13 @@
             </button>
             <% } %> 
         </div>
-        <div class="card mb-3">
+        <div class="card mb-3 bg-secondary bg-gradient">
             <div class="card-body">
             <h5 class="card-title"><%= campground.title %></h5>
             <p class="card-text"><%= campground.description %></p>
+            <p class="card-text"><%= campground.location %></p>
+            <p class="card-text">Submitted by <%= campground.author.username %></p>
             </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item text-muted"><%= campground.location %></li>
-            <li class="list-group-item ">Submitted by <%= campground.author.username %></li>
-            <li class="list-group-item">$<%= campground.price %>/night</li>
-           
-            </ul>
             <% if (currentUser && campground.author.equals(currentUser._id)) { %> 
             <div class="card-body">
             <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit ">Edit Campground</a>
@@ -42,9 +38,6 @@
             </form>
             </div>
             <% } %> 
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
         </div>
     </div>
     <div class="col-6">

@@ -24,7 +24,7 @@ module.exports.createCampground = async(req,res) =>{
     campground.images = req.files.map( f => ({url: f.path, filename: f.filename}));
     campground.author = req.user._id; //req.user is automatically loaded in during auth
     await campground.save();
-    req.flash('success', 'Succesfully made a new campground');
+    req.flash('success', 'Succesfully Pinned a New Photo Location');
     res.redirect(`/campgrounds/${campground._id}`)
 }
 
@@ -36,7 +36,7 @@ module.exports.showCampground = async (req,res) => {
         }
     }).populate('author'); 
     if(!campground){
-        req.flash('error','This campground does not exist anymore')
+        req.flash('error','This Photo Spot Does Not Exist Anymore')
         return res.redirect('/campgrounds')
     }
     res.render('campgrounds/show', {campground, msg: req.flash('success')});
@@ -46,7 +46,7 @@ module.exports.renderEditForm = async (req, res) => {
     const {id}= req.params;
     const campground = await Campground.findById(id);
     if(!campground){
-        req.flash('error','This campground does not exist anymore')
+        req.flash('error','This Photo Location Does Not Exist Anymore')
         return res.redirect('/campgrounds')
     }
     res.render('campgrounds/edit', {campground});
@@ -66,12 +66,12 @@ module.exports.updateCampground = async (req, res) => {
         }
         await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } }) //update campground, pull from images array, where file name of image array is, in the req.body.deleteImages
     }
-    req.flash('success', 'Successfully updated campground!');
+    req.flash('success', 'Successfully Updated Photo Spot');
     res.redirect(`/campgrounds/${campground._id}`)
 }
 
 module.exports.deleteCampground = async(req,res) =>{
     await Campground.findByIdAndDelete(req.params.id);
-    req.flash('success', 'Successfuly deleted a campground');
+    req.flash('success', 'Successfuly Deleted a Photo Spot');
     res.redirect('/campgrounds');
 }

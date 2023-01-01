@@ -1,7 +1,7 @@
 <%layout('layouts/boilerplate')%> <!--this passes through this code into the body of the boilerplate-->
 <link rel="stylesheet" href="/stylesheets/images.css" class="rel"> 
 <div class="row">
-    <h1 class="text-center">New Campground</h1>
+    <h1 class="text-center">Create Photography Location</h1>
     <div class="col-6 offset-3">
         <form action = "/campgrounds" method="POST" class="needs-validation" novalidate enctype="multipart/form-data" > <!--When making a post requset you have to encode the data that forms the body of the request in some way this is done with enctype -->
             <div class="mb-3">
@@ -33,7 +33,7 @@
                     Looks good!
                 </div>
             </div> -->
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label class="form-label" for="price">Campground Price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">$</span>
@@ -43,7 +43,7 @@
                         Looks good!
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" type="text" id="description" name="campground[description]" required></textarea>
@@ -52,10 +52,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button class="btn btn-success">Add Campground</button>
+                <button class="btn btn-success">Add Photo Location</button>
             </div>
         </form>
-        <a href="/campgrounds">All Campgrounds</a>
     </div>
 </div>
 

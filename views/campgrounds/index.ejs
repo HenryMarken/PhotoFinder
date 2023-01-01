@@ -2,10 +2,9 @@
 <link rel="stylesheet" href="/stylesheets/app.css">
 <div id="cluster-map"></div>
 <div class="container">
-    <h1>All Campgrounds</h1>
-
+    <h1>Photography Spots</h1>
     <% for (let campground of campgrounds) {%> 
-        <div class="card mb-3">
+        <div class="card mb-3  bg-secondary bg-gradient">
             <div class="row">
                 <div class="col-md-4">
                     <% if (campground.images.length) { %> 
@@ -19,9 +18,7 @@
                         <div class="card-title">
                             <h5 class="card-title"><%= campground.title  %> </h5>
                             <p class="card-text"><%= campground.description  %> </p>
-                            <p class="card-text">
-                                <small class="text-muted"><%= campground.location %> </small>
-                            </p>
+                            <p class="card-text"> <%= campground.location %></p>
                             <a href="/campgrounds/<%=campground._id  %> " class="btn btn-primary">View <%= campground.title %> </a>
                         </div>
                     </div>
