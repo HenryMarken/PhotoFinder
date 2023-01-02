@@ -12,7 +12,7 @@ module.exports.register = async(req,res, next) =>{ //catchasyc catches the error
         req.login(registeredUser, err => { //stay logged in after registering 
             if(err) return next(err);
             req.flash('success', 'Welcome to PhotoFinder');
-            res.redirect('/campgrounds');
+            res.redirect('/photospots');
         })
     }
     catch(e){
@@ -28,7 +28,7 @@ module.exports.renderLogin = (req,res) =>{
 module.exports.login = (req,res) =>{ // middleware passport.authenticate() specify strategy this strategy can be through facebook google twitter github
     //with the middleware if we make it in this body we know user was properly authenticated
     req.flash('success', 'Logged In')
-    const redirectUrl = req.session.returnTo || '/campgrounds';
+    const redirectUrl = req.session.returnTo || '/photospots';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 }
@@ -36,5 +36,5 @@ module.exports.login = (req,res) =>{ // middleware passport.authenticate() speci
 module.exports.logout = (req,res) =>{
     req.logout()
     req.flash('success', "Logged Out");
-    res.redirect('/campgrounds');
+    res.redirect('/photospots');
 }

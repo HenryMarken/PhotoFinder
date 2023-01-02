@@ -46,7 +46,7 @@ const CampgroundSchema = new Schema ({
 
 
 CampgroundSchema.virtual('properties.popUpMarkup').get(function(){
-    return `<strong><a href="/campgrounds/${this._id}">${this.title}</a></strong>` // virtual property
+    return `<strong><a href="/photospots/${this._id}">${this.title}</a></strong>` // virtual property
 })
 
 CampgroundSchema.post('findOneAndDelete', async function (doc){ //findOneAndDelete middleware for findByIdAndDelete if campground uses different method of delete the middleware findOneAndDelete will not execute

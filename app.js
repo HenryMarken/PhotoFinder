@@ -26,7 +26,7 @@ const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
 //Connecting to Mongoose
-const dbUrl = 'mongodb+srv://HenryMarken:Coldwinter11!@cluster0.ct32gpv.mongodb.net/?retryWrites=true&w=majority';
+const dbUrl = 'mongodb+srv://HenryMarken:Coldwinter11@cluster0.nv3jamo.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbUrl,{ 
 //this was changed in Mongo 6 as these are all set to true by default
     // useNewUrlParser:true, 
@@ -144,8 +144,8 @@ app.use((req,res,next) => { //all our cookies stored in session
 
 
 //Routing 
-app.use('/campgrounds', campgroundRoutes)
-app.use('/campgrounds/:id/reviews' , reviewRoutes)
+app.use('/photospots', campgroundRoutes)
+app.use('/photospots/:id/reviews' , reviewRoutes)
 app.use('/', userRoutes)
 
 app.get('/', (req, res) => {

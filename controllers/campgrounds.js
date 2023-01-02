@@ -25,7 +25,7 @@ module.exports.createCampground = async(req,res) =>{
     campground.author = req.user._id; //req.user is automatically loaded in during auth
     await campground.save();
     req.flash('success', 'Succesfully Pinned a New Photo Location');
-    res.redirect(`/campgrounds/${campground._id}`)
+    res.redirect(`/photospots/${campground._id}`)
 }
 
 module.exports.showCampground = async (req,res) => {
@@ -37,7 +37,7 @@ module.exports.showCampground = async (req,res) => {
     }).populate('author'); 
     if(!campground){
         req.flash('error','This Photo Spot Does Not Exist Anymore')
-        return res.redirect('/campgrounds')
+        return res.redirect('/photospots')
     }
     res.render('campgrounds/show', {campground, msg: req.flash('success')});
 }
@@ -47,7 +47,7 @@ module.exports.renderEditForm = async (req, res) => {
     const campground = await Campground.findById(id);
     if(!campground){
         req.flash('error','This Photo Location Does Not Exist Anymore')
-        return res.redirect('/campgrounds')
+        return res.redirect('/photospots')
     }
     res.render('campgrounds/edit', {campground});
 }
@@ -67,11 +67,11 @@ module.exports.updateCampground = async (req, res) => {
         await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } }) //update campground, pull from images array, where file name of image array is, in the req.body.deleteImages
     }
     req.flash('success', 'Successfully Updated Photo Spot');
-    res.redirect(`/campgrounds/${campground._id}`)
+    res.redirect(`/photospots/${campground._id}`)
 }
 
 module.exports.deleteCampground = async(req,res) =>{
     await Campground.findByIdAndDelete(req.params.id);
     req.flash('success', 'Successfuly Deleted a Photo Spot');
-    res.redirect('/campgrounds');
+    res.redirect('/photospots');
 }

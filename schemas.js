@@ -26,6 +26,7 @@ const Joi = BaseJoi.extend(extension)
 module.exports.campgroundSchema = Joi.object({ 
     campground: Joi.object({
         title: Joi.string().required().escapeHTML(), //when post request to localhost:3000/campgrounds with the body key campground.title is not defined it will display the error in console
+        // image: Joi.string().required(),
         location: Joi.string().required().escapeHTML(),
         description: Joi.string().required().escapeHTML(),
     }).required(),

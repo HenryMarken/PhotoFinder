@@ -10,7 +10,7 @@ module.exports.createReview = async(req,res) =>{
     await review.save();
     await campground.save();
     req.flash('success', 'Successfully Posted a Review');
-    res.redirect(`/campgrounds/${campground._id}`)
+    res.redirect(`/photospots/${campground._id}`)
 }
 
 module.exports.deleteReview = async(req, res) =>{
@@ -18,5 +18,5 @@ module.exports.deleteReview = async(req, res) =>{
     await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId} });
     await Review.findByIdAndDelete(reviewId);
     req.flash('success', 'Successfuly Deleted a Review')
-    res.redirect(`/campgrounds/${id}`)
+    res.redirect(`/photospots/${id}`)
 }
