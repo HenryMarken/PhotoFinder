@@ -26,7 +26,7 @@ const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
 //Connecting to Mongoose
-const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb+srv://HenryMarken:Coldwinter11!@cluster0.ct32gpv.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbUrl,{ 
 //this was changed in Mongo 6 as these are all set to true by default
     // useNewUrlParser:true, 
